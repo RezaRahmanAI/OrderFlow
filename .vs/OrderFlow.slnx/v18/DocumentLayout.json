@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Reza\\Documents\\Project\\OrderFlow\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{21A576CD-6EA0-734D-C556-F57783CEA875}|src\\OrderFlow.Domain\\OrderFlow.Domain.csproj|c:\\users\\reza\\documents\\project\\orderflow\\src\\orderflow.domain\\exceptions\\domainexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{21A576CD-6EA0-734D-C556-F57783CEA875}|src\\OrderFlow.Domain\\OrderFlow.Domain.csproj|solutionrelative:src\\orderflow.domain\\exceptions\\domainexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DomainException.cs",
+              "DocumentMoniker": "C:\\Users\\Reza\\Documents\\Project\\OrderFlow\\src\\OrderFlow.Domain\\Exceptions\\DomainException.cs",
+              "RelativeDocumentMoniker": "src\\OrderFlow.Domain\\Exceptions\\DomainException.cs",
+              "ToolTip": "C:\\Users\\Reza\\Documents\\Project\\OrderFlow\\src\\OrderFlow.Domain\\Exceptions\\DomainException.cs",
+              "RelativeToolTip": "src\\OrderFlow.Domain\\Exceptions\\DomainException.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-23T04:37:52.919Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
