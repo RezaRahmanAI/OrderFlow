@@ -1,5 +1,5 @@
 using OrderFlow.Application.Abstractions;
-using OrderFlow.Domain.Exceptions;
+using OrderFlow.Application.Common.Exceptions;
 
 namespace OrderFlow.Application.Products.UpdateProduct;
 
@@ -12,19 +12,19 @@ public sealed class UpdateProductService
         _productRepository = productRepository;
     }
 
-    public async Task<ProductResponse?> ExecuteAsync(
+    public async Task<ProductResponse> ExecuteAsync(
         Guid id,
         UpdateProductRequest request,
         CancellationToken cancellationToken = default)
     {
         var product = await _productRepository.GetTrackedByIdAsync(id, cancellationToken);
         if (product is null)
-            return null;
+            throw new NotFoundException($"Product '{id}' was not found.");
 
         // Invalid SKUs are rejected by the domain below without a database lookup.
         if (!string.IsNullOrWhiteSpace(request.Sku) &&
             await _productRepository.ExistsBySkuExceptAsync(request.Sku, id, cancellationToken))
-            throw new DomainException($"Product with SKU '{request.Sku}' already exists.");
+            throw new ConflictException($"Product with SKU '{request.Sku}' already exists.");
 
         product.ChangeName(request.Name);
         product.ChangeSku(request.Sku);

@@ -1,9 +1,14 @@
 using OrderFlow.Domain.Entities;
+using OrderFlow.Application.Products;
 
 namespace OrderFlow.Application.Abstractions;
 
 public interface IProductRepository
 {
+    Task<IReadOnlyList<ProductResponse>> GetAllAsync(CancellationToken cancellationToken = default);
+
+    Task<ProductResponse?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+
     Task<Product?> GetTrackedByIdAsync(
         Guid id,
         CancellationToken cancellationToken = default);

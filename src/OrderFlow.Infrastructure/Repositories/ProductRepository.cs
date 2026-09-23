@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using OrderFlow.Application.Abstractions;
+using OrderFlow.Application.Products;
 using OrderFlow.Domain.Entities;
 using OrderFlow.Infrastructure.Persistence;
 
@@ -58,5 +59,26 @@ public sealed class ProductRepository : IProductRepository
     public Task SaveChangesAsync(CancellationToken cancellationToken = default)
     {
         return _dbContext.SaveChangesAsync(cancellationToken);
+    }
+
+    public async Task<IReadOnlyList<ProductResponse>> GetAllAsync(
+        CancellationToken cancellationToken = default)
+    {
+        return await _dbContext.Products.AsNoTracking()
+            .Where(x => x.IsActive)
+            .Select(x => new ProductResponse(
+                x.Id, x.Name, x.Sku, x.Price, x.Stock, x.IsActive, x.CreatedAt))
+            .ToListAsync(cancellationToken);
+    }
+
+    public async Task<ProductResponse?> GetByIdAsync(
+        Guid id,
+        CancellationToken cancellationToken = default)
+    {
+        return await _dbContext.Products.AsNoTracking()
+            .Where(x => x.Id == id && x.IsActive)
+            .Select(x => new ProductResponse(
+                x.Id, x.Name, x.Sku, x.Price, x.Stock, x.IsActive, x.CreatedAt))
+            .SingleOrDefaultAsync(cancellationToken);
     }
 }

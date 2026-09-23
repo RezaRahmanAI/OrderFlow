@@ -1,6 +1,6 @@
 using OrderFlow.Application.Abstractions;
 using OrderFlow.Domain.Entities;
-using OrderFlow.Domain.Exceptions;
+using OrderFlow.Application.Common.Exceptions;
 
 namespace OrderFlow.Application.Products.CreateProduct;
 
@@ -25,7 +25,7 @@ public sealed class CreateProductService
 
         if (skuExists)
         {
-            throw new DomainException(
+            throw new ConflictException(
                 $"Product with SKU '{request.Sku}' already exists.");
         }
 
