@@ -92,6 +92,30 @@ public class Product
         Price = newPrice;
     }
 
+    public void ChangeName(string name)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+            throw new DomainException("Product name is required.");
+
+        Name = name.Trim();
+    }
+
+    public void ChangeSku(string sku)
+    {
+        if (string.IsNullOrWhiteSpace(sku))
+            throw new DomainException("Product SKU is required.");
+
+        Sku = sku.Trim().ToUpperInvariant();
+    }
+
+    public void ChangeStock(int stock)
+    {
+        if (stock < 0)
+            throw new DomainException("Stock cannot be negative.");
+
+        Stock = stock;
+    }
+
     public void Activate()
     {
         IsActive = true;

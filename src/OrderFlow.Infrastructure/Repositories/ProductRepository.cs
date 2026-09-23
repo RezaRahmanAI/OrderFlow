@@ -33,4 +33,30 @@ public sealed class ProductRepository : IProductRepository
 
         await _dbContext.SaveChangesAsync(cancellationToken);
     }
+
+    public async Task<Product?> GetTrackedByIdAsync(
+        Guid id,
+        CancellationToken cancellationToken = default)
+    {
+        return await _dbContext.Products.AsTracking().SingleOrDefaultAsync(
+            x => x.Id == id,
+            cancellationToken);
+    }
+
+    public async Task<bool> ExistsBySkuExceptAsync(
+        string sku,
+        Guid productId,
+        CancellationToken cancellationToken = default)
+    {
+        var normalizedSku = sku.Trim().ToUpperInvariant();
+
+        return await _dbContext.Products.AnyAsync(
+            x => x.Sku == normalizedSku && x.Id != productId,
+            cancellationToken);
+    }
+
+    public Task SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
+        return _dbContext.SaveChangesAsync(cancellationToken);
+    }
 }
