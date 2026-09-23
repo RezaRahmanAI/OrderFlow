@@ -1,0 +1,33 @@
+# .NET build output
+**/[Bb]in/
+**/[Oo]bj/
+artifacts/
+
+# Visual Studio and user-specific IDE settings
+.vs/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Test and coverage output
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+!.env.sample
+appsettings.Local.json
+appsettings.*.Local.json
+*.pfx
+*.p12
+
+# Logs and OS files
+*.log
+.DS_Store
+Thumbs.db
